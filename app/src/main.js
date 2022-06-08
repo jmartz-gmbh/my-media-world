@@ -6,7 +6,7 @@ import routes from "./routes";
 import plausible from "./plugins/plausible";
 
 const plausibleOptions = {
-  domain: "www.my-media.world.de",
+  domain: "www.my-media.world",
   apiHost: "https://tracking.jmartz.gmbh",
   hashMode: false,
   trackLocalhost: false,

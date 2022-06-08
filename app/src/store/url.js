@@ -1,6 +1,6 @@
 export default {
   state: () => ({
-      baseurl: 'https://www.my-media.world.de'
+      baseurl: 'https://www.my-media.world'
   }),
   mutations: {},
 };
