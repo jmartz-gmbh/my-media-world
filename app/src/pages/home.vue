@@ -97,6 +97,11 @@ export default {
       },
     };
   },
+  mounted() {
+    if (this.$store.state.auth.token != null) {
+      this.$router.push("/dashboard");
+    }
+  },
   methods: {
     login: function () {
       const that = this;
