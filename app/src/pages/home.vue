@@ -114,10 +114,13 @@ export default {
           return response.json();
         })
         .then(function (json) {
-          console.log(json.token);
           if (json.token) {
+            that.$router.push("/dashboard");
             that.$store.commit("auth-token-update", json.token);
-            that.$store.commit("auth-username-update", that.form.login.username);
+            that.$store.commit(
+              "auth-username-update",
+              that.form.login.username
+            );
           }
         });
     },
