@@ -26,7 +26,7 @@ export default {
   methods: {
     verify: function () {
       const that = this;
-      fetch("https://auth.my-media.world/api/verify/token", {
+      fetch("https://auth.my-media.world/api/verify/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
