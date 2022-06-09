@@ -26,7 +26,10 @@ export default {
     $route: function(){
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
-  }
+  },
+  mounted() {
+    this.$store.commit("auth-token-reload");
+  },
 };
 </script>
 
