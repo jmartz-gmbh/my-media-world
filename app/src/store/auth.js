@@ -7,8 +7,10 @@ export default {
   }),
   mutations: {
     "auth-reset": function (state) {
-      state.token = '';
-      state.username = '';
+      state.token = "";
+      state.username = "";
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
     },
     "auth-token-update": function (state, token) {
       state.token = token;
@@ -18,7 +20,7 @@ export default {
       state.username = username;
       localStorage.setItem("username", username);
     },
-    "auth-token-reload": function (state) {
+    "auth-reload": function (state) {
       state.username = localStorage.getItem("username");
       state.token = localStorage.getItem("token");
     },

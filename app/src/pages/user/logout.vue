@@ -1,17 +1,16 @@
 <template>
-<div class="vp-user-logout">
-    Logout
-</div>
+  <div class="vp-user-logout">Logout</div>
 </template>
 
 <script>
 export default {
-    name:"UserLogout",
-    mounted() {
-        this.$store.commit('auth-reset');
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        this.$router.push('/');
-    },
-}
+  name: "UserLogout",
+  mounted() {
+    const that = this;
+    this.$store.commit("auth-reset");
+    setTimeout(function () {
+      that.$router.push("/");
+    }, 5000);
+  },
+};
 </script>

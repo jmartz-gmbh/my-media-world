@@ -28,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.commit("auth-token-reload");
+    this.$store.commit("auth-reload");
   },
 };
 </script>

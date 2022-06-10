@@ -58,6 +58,12 @@ export default {
     },
   },
   mounted() {
+    if (
+      this.$store.state.auth.token == null ||
+      this.$store.state.auth.token == ""
+    ) {
+      this.$router.push("/");
+    }
     this.loadMovies();
   },
 };
