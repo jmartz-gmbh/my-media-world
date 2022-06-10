@@ -6,7 +6,12 @@
         <p>Hier findest du alle Informationen zu deinen Filmen und Serien.</p>
       </div>
       <div class="col-span-6 md:col-span-4">
-        <h2 class="font-bold">Filme ({{ movies.length }})</h2>
+        <h2 class="flex justify-between">
+          <span class="font-bold">Filme ({{ movies.length }})</span>
+          <router-link to="/movies" class="text-sm text-blue-600"
+            >alle Filme</router-link
+          >
+        </h2>
         <div class="grid grid-cols-6 gap-2">
           <div
             v-for="(movie, index) in movies"

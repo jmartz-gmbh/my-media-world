@@ -14,6 +14,7 @@
             <div class="col col-span-12 md:col-span-2">TMDB</div>
             <div class="col col-span-12 md:col-span-2">Name</div>
             <div class="col col-span-12 md:col-span-2">Erstellt</div>
+            <div class="col col-span-12 md:col-span-2">Action</div>
           </div>
           <div
             v-for="(movie, index) in movies"
@@ -23,6 +24,7 @@
             <div class="col col-span-12 md:col-span-2">{{ movie.tmdb }}</div>
             <div class="col col-span-12 md:col-span-2">{{ movie.name }}</div>
             <div class="col col-span-12 md:col-span-2">{{ movie.created_at }}</div>
+            <div class="col col-span-12 md:col-span-2"><button @click="remove(movie.id)">delete</button></div>
           </div>
         </div>
       </div>
@@ -42,6 +44,27 @@ export default {
     this.load();
   },
   methods: {
+    remove: function (id) {
+      const that = this;
+      fetch("https://auth.my-media.world/api/movie/remove", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: this.$store.state.auth.token,
+          id: id
+        }),
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          if (json.movies) {
+            that.movies = json.movies;
+          }
+        });
+    },
     load: function () {
       const that = this;
       fetch("https://auth.my-media.world/api/movies", {
