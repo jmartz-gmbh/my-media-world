@@ -80,7 +80,7 @@ export default {
           return response.json();
         })
         .then(function (json) {
-          console.log(json);
+          that.$router.push('/movies');
         });
     },
     load: function () {

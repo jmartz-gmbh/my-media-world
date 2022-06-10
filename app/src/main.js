@@ -12,11 +12,16 @@ const plausibleOptions = {
   trackLocalhost: false,
 };
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlus, faBars, faUser } from "@fortawesome/free-solid-svg-icons";
-import { } from "@fortawesome/free-brands-svg-icons";
+import {
+  faPlus,
+  faBars,
+  faUser,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import {} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faPlus, faBars, faUser);
+library.add(faPlus, faBars, faUser, faTimes);
 
 const app = createApp(App);
 

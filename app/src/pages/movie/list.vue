@@ -5,7 +5,9 @@
         <h2 class="flex justify-between">
           <span></span>
           <div class="buttons">
-            <button @click="$router.push('/movie/add')">Add</button>
+            <button @click="$router.push('/movie/add')">
+              <fa icon="plus" class="px-2 py-2 bg-white border border-black" />
+            </button>
           </div>
         </h2>
         <div class="tw-table block border border-black">
@@ -23,8 +25,17 @@
             <div class="col col-span-12 md:col-span-2">{{ movie.id }}</div>
             <div class="col col-span-12 md:col-span-2">{{ movie.tmdb }}</div>
             <div class="col col-span-12 md:col-span-2">{{ movie.name }}</div>
-            <div class="col col-span-12 md:col-span-2">{{ movie.created_at }}</div>
-            <div class="col col-span-12 md:col-span-2"><button @click="remove(movie.id)">delete</button></div>
+            <div class="col col-span-12 md:col-span-2">
+              {{ movie.created_at }}
+            </div>
+            <div class="col col-span-12 md:col-span-2">
+              <button
+                @click="remove(movie.id)"
+                class="px-2 py-2 bg-white border border-black w-8 text-center"
+              >
+                <fa icon="times" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -53,16 +64,14 @@ export default {
         },
         body: JSON.stringify({
           token: this.$store.state.auth.token,
-          id: id
+          id: id,
         }),
       })
         .then(function (response) {
           return response.json();
         })
         .then(function (json) {
-          if (json.movies) {
-            that.movies = json.movies;
-          }
+          that.$router.go();
         });
     },
     load: function () {
