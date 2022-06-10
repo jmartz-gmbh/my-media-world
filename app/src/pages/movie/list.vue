@@ -3,7 +3,8 @@
     <div class="grid grid-cols-6 gap-2">
       <div class="col-span-6">
         <h2 class="flex justify-between">
-          <span></span>
+          <span>Filme</span>
+          <input type="text" v-model="search" />
           <div class="buttons">
             <button @click="$router.push('/movie/add')">
               <fa icon="plus" class="px-2 py-2 bg-white border border-black" />
@@ -12,24 +13,27 @@
         </h2>
         <div class="tw-table block border border-black">
           <div class="row grid grid-cols-12 bg-gray-300 font-bold px-2 py-2">
-            <div class="col col-span-12 md:col-span-2">Name</div>
-            <div class="col col-span-12 md:col-span-2">Erstellt</div>
-            <div class="col col-span-12 md:col-span-2">Action</div>
+            <div class="col col-span-12 md:col-span-6">Name</div>
+            <div class="col col-span-12 md:col-span-6">Action</div>
           </div>
           <div
             v-for="(movie, index) in movies"
             class="row grid grid-cols-12 font-bold px-2 py-2"
           >
-            <div class="col col-span-12 md:col-span-2">{{ movie.name }}</div>
-            <div class="col col-span-12 md:col-span-2">
-              {{ movie.created_at }}
-            </div>
-            <div class="col col-span-12 md:col-span-2">
+            <div class="col col-span-12 md:col-span-6">{{ movie.name }}</div>
+            <div class="col col-span-12 md:col-span-4">{{ movie.comment }}</div>
+            <div class="col col-span-12 md:col-span-2 space-x-2">
               <button
                 @click="remove(movie.id)"
                 class="px-2 py-2 bg-white border border-black w-8 text-center"
               >
                 <fa icon="times" />
+              </button>
+              <button
+                @click="$router.push('/movie/' + movie.id)"
+                class="px-2 py-2 bg-white border border-black w-8 text-center"
+              >
+                <fa icon="edit" />
               </button>
             </div>
           </div>
@@ -44,7 +48,8 @@ export default {
   name: "Homepage",
   data() {
     return {
-      movies: {},
+      movies: [],
+      search: "",
     };
   },
   mounted() {

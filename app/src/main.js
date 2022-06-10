@@ -17,11 +17,12 @@ import {
   faBars,
   faUser,
   faTimes,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faPlus, faBars, faUser, faTimes);
+library.add(faPlus, faBars, faUser, faTimes,faEdit);
 
 const app = createApp(App);
 
