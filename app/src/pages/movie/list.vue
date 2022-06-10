@@ -13,11 +13,11 @@
         </h2>
         <div class="tw-table block border border-black">
           <div class="row grid grid-cols-12 bg-gray-300 font-bold px-2 py-2">
-            <div class="col col-span-12 md:col-span-6">Name</div>
-            <div class="col col-span-12 md:col-span-6">TMDB Rating</div>
-            <div class="col col-span-12 md:col-span-6">User Rating</div>
-            <div class="col col-span-12 md:col-span-6">Kommentar</div>
-            <div class="col col-span-12 md:col-span-6">Action</div>
+            <div class="col col-span-12 md:col-span-4">Name</div>
+            <div class="col col-span-12 md:col-span-2">TMDB Rating</div>
+            <div class="col col-span-12 md:col-span-2">User Rating</div>
+            <div class="col col-span-12 md:col-span-2">Kommentar</div>
+            <div class="col col-span-12 md:col-span-2">Action</div>
           </div>
           <div
             v-for="(movie, index) in movies"
