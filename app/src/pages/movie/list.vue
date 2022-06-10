@@ -12,8 +12,6 @@
         </h2>
         <div class="tw-table block border border-black">
           <div class="row grid grid-cols-12 bg-gray-300 font-bold px-2 py-2">
-            <div class="col col-span-12 md:col-span-2">Id</div>
-            <div class="col col-span-12 md:col-span-2">TMDB</div>
             <div class="col col-span-12 md:col-span-2">Name</div>
             <div class="col col-span-12 md:col-span-2">Erstellt</div>
             <div class="col col-span-12 md:col-span-2">Action</div>
@@ -22,8 +20,6 @@
             v-for="(movie, index) in movies"
             class="row grid grid-cols-12 font-bold px-2 py-2"
           >
-            <div class="col col-span-12 md:col-span-2">{{ movie.id }}</div>
-            <div class="col col-span-12 md:col-span-2">{{ movie.tmdb }}</div>
             <div class="col col-span-12 md:col-span-2">{{ movie.name }}</div>
             <div class="col col-span-12 md:col-span-2">
               {{ movie.created_at }}
