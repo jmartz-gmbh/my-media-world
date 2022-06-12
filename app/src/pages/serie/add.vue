@@ -1,5 +1,5 @@
 <template>
-  <div class="vp-movie-add">
+  <div class="vp-serie-add">
     <div class="grid grid-cols-6 gap-2">
       <div class="col-span-6 md:col-span-3">
         <h2>Headline</h2>
@@ -11,7 +11,7 @@
               type="text"
               v-model="query"
               class="px-2 py-2 w-2/3"
-              placeholder="Movie Title"
+              placeholder="Serien Title"
             />
           </div>
           <div class="form-group bg-white px-2 py-2 flex">
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: "MovieAdd",
+  name: "SerieAdd",
   data() {
     return {
       query: "",
@@ -63,14 +63,14 @@ export default {
   },
   mounted() {
     this.$store.commit('breadcrumb-add', {
-      link: '/movies',
-      label: 'Filme'
+      link: '/series',
+      label: 'Serien'
     });
   },
   methods: {
     add: function (id) {
       const that = this;
-      fetch(that.$store.state.url.auth + "/api/movie/add", {
+      fetch(that.$store.state.url.auth + "/api/serie/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,13 +86,14 @@ export default {
           return response.json();
         })
         .then(function (json) {
-          that.$router.push('/movies');
+            console.log(json);
+          // that.$router.push('/series');
         });
     },
     load: function () {
       const that = this;
       fetch(
-        "https://api.themoviedb.org/3/search/movie?page=1&query=" +
+        "https://api.themoviedb.org/3/search/tv?page=1&query=" +
           encodeURI(this.query),
         {
           headers: {
@@ -106,9 +107,7 @@ export default {
           return response.json();
         })
         .then(function (json) {
-          if (json.results) {
-            that.items = json.results;
-          }
+          that.items = json.results;
         });
     },
   },

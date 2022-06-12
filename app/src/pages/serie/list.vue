@@ -1,12 +1,11 @@
 <template>
-  <div class="vp-home">
+  <div class="vp-series-list">
     <div class="grid grid-cols-6 gap-2">
       <div class="col-span-6">
         <h2 class="flex justify-between">
-          <span>Filme</span>
-          <input type="text" v-model="search" />
+          <span>Serien</span>
           <div class="buttons">
-            <button @click="$router.push('/movie/add')">
+            <button @click="$router.push('/serie/add')">
               <fa icon="plus" class="px-2 py-2 bg-white border border-black" />
             </button>
           </div>
@@ -20,31 +19,31 @@
             <div class="col col-span-12 md:col-span-2">Action</div>
           </div>
           <div
-            v-for="(movie, index) in movies"
+            v-for="(serie, index) in series"
             class="row grid grid-cols-12 px-2 py-2 bg-white"
           >
             <div class="col col-span-12 md:col-span-4">
-              <span class="font-bold">{{ movie.name }}</span>
+              <span class="font-bold">{{ serie.name }}</span>
             </div>
             <div class="col col-span-12 md:col-span-2">
-              {{ movie.tmdb_rating }}
+              {{ serie.tmdb_rating }}
             </div>
-            <div class="col col-span-12 md:col-span-2">{{ movie.rating }}</div>
+            <div class="col col-span-12 md:col-span-2">{{ serie.rating }}</div>
             <div class="col col-span-12 md:col-span-2 space-x-2">
               <button
-                @click="remove(movie.id)"
+                @click="remove(serie.id)"
                 class="px-2 py-2 bg-white border border-black w-8 text-center"
               >
                 <fa icon="times" />
               </button>
               <button
-                @click="$router.push('/movie/' + movie.id)"
+                @click="$router.push('/serie/' + serie.id)"
                 class="px-2 py-2 bg-white border border-black w-8 text-center"
               >
                 <fa icon="edit" />
               </button>
             </div>
-            <div class="col col-span-12">{{ movie.comment }}</div>
+            <div class="col col-span-12">{{ serie.comment }}</div>
           </div>
         </div>
       </div>
@@ -54,10 +53,10 @@
 
 <script>
 export default {
-  name: "Homepage",
+  name: "SerienList",
   data() {
     return {
-      movies: [],
+      series: [],
       search: "",
     };
   },
@@ -68,14 +67,14 @@ export default {
       label: 'Dashboard'
     });
      this.$store.commit('breadcrumb-add', {
-      link: '/movies',
-      label: 'Filme'
+      link: '/series',
+      label: 'Serien'
     });
   },
   methods: {
     remove: function (id) {
       const that = this;
-      fetch("https://auth.my-media.world/api/movie/remove", {
+      fetch("https://auth.my-media.world/api/serie/remove", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +93,7 @@ export default {
     },
     load: function () {
       const that = this;
-      fetch("https://auth.my-media.world/api/movies", {
+      fetch("https://auth.my-media.world/api/series", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -107,8 +106,8 @@ export default {
           return response.json();
         })
         .then(function (json) {
-          if (json.movies) {
-            that.movies = json.movies;
+          if (json.series) {
+            that.series = json.series;
           }
         });
     },

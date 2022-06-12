@@ -4,6 +4,8 @@
       <header-general></header-general>
     </header>
     <main class="mx-auto max-w-5xl px-2 py-2 mt-2 min-h-screen">
+      <breadcrumb></breadcrumb>
+      <messages></messages>
       <router-view></router-view>
     </main>
     <footer class="mx-auto max-w-5xl px-2 py-2 mt-2">
@@ -14,6 +16,8 @@
 <script>
 import header from "./components/header.vue";
 import footer from "./components/footer.vue";
+import messages from "./components/messages.vue";
+import breadcrumb from "./components/breadcrumb.vue";
 
 import "./tailwind.css";
 export default {
@@ -21,11 +25,17 @@ export default {
   components: {
     "header-general": header,
     "footer-general": footer,
+    messages: messages,
+    breadcrumb: breadcrumb,
   },
   watch: {
-    $route: function(){
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    $route: function () {
+      this.$store.commit("breadcrumb-add", {
+        link: "/",
+        label: "Home",
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
   },
   mounted() {
     this.$store.commit("auth-reload");
