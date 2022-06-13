@@ -86,8 +86,7 @@ export default {
           return response.json();
         })
         .then(function (json) {
-            console.log(json);
-          // that.$router.push('/series');
+          that.$router.push('/series/'+id+'/season/add');
         });
     },
     load: function () {

@@ -35,7 +35,7 @@
             <div class="col col-span-12 md:col-span-2">{{ item.title }}</div>
             <div class="col col-span-12 md:col-span-2">
               <img
-                :src="'https://image.tmdb.org/t/p/original' + item.poster_path"
+                :src="$store.state.url.media + item.poster_path"
                 alt=""
               />
             </div>

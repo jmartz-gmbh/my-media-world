@@ -37,10 +37,22 @@
                 <fa icon="times" />
               </button>
               <button
-                @click="$router.push('/serie/' + serie.id)"
+                @click="$router.push('/serie/' + serie.tmdb)"
                 class="px-2 py-2 bg-white border border-black w-8 text-center"
               >
                 <fa icon="edit" />
+              </button>
+              <button
+                @click="$router.push('/series/' + serie.tmdb + '/season/add')"
+                class="px-2 py-2 bg-white border border-black w-8 text-center"
+              >
+                <fa icon="plus" />
+              </button>
+              <button
+                @click="$router.push('/serie/' + serie.tmdb + '/seasons')"
+                class="px-2 py-2 bg-white border border-black w-8 text-center"
+              >
+                <fa icon="bars" />
               </button>
             </div>
             <div class="col col-span-12">{{ serie.comment }}</div>
@@ -62,13 +74,13 @@ export default {
   },
   mounted() {
     this.load();
-    this.$store.commit('breadcrumb-add', {
-      link: '/dashboard',
-      label: 'Dashboard'
+    this.$store.commit("breadcrumb-add", {
+      link: "/dashboard",
+      label: "Dashboard",
     });
-     this.$store.commit('breadcrumb-add', {
-      link: '/series',
-      label: 'Serien'
+    this.$store.commit("breadcrumb-add", {
+      link: "/series",
+      label: "Serien",
     });
   },
   methods: {
