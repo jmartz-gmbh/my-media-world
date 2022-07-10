@@ -1,6 +1,16 @@
 <template>
   <div class="vp-home">
     <div class="grid grid-cols-6 gap-2">
+      <div class="col-span-6">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-8008841377413395"
+          data-ad-slot="2152653256"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
       <div class="col-span-6 md:col-span-2">
         <div class="card text-center bg-white px-2 py-2">
           <fa icon="user" class="fa-3x mt-5 mb-3" />
